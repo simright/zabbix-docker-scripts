@@ -5,7 +5,7 @@ import psutil
 import sys
 
 
-class cpu_times(object):
+class cpu(object):
     def __init__(self, attr, per):
         if attr == 'count':
             _value = psutil.cpu_count(logical=per) #per为True时为逻辑核数，为False时为物理核数
