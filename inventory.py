@@ -9,7 +9,7 @@ class cpu_times(object):
     def __init__(self, attr, per):
         if attr == 'count':
             _value = psutil.cpu_count(logical=per) #per为True时为逻辑核数，为False时为物理核数
-        elif attr == 'percent'
+        elif attr == 'percent':
             _value = psutil.cpu_percent()
         else:
             _cpu_times = psutil.cpu_times(percpu=per) #是否按百分比显示
