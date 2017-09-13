@@ -7,6 +7,7 @@ import sys
 
 class cpu(object):
     def __init__(self, attr, per):
+        per = eval(per)
         if attr == 'count':
             _value = psutil.cpu_count(logical=per) #per为True时为逻辑核数，为False时为物理核数
         elif attr == 'percent':
@@ -19,7 +20,7 @@ class cpu(object):
 class mem(object):
     def __init__(self, attr, per):
         _mem = psutil.virtual_memory()
-        _value = (float(_mem.__getattribute__(attr)) / _mem.__getattribute__('total') * 100) if per else _mem.__getattribute__(attr)
+        _value = (float(_mem.__getattribute__(attr)) / _mem.__getattribute__('total') * 100) if eval(per) else _mem.__getattribute__(attr)
         setattr(self, attr, _value)
 
 class disk(object):
