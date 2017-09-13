@@ -19,7 +19,6 @@ class cpu(object):
 class mem(object):
     def __init__(self, attr, per):
         _mem = psutil.virtual_memory()
-        print _mem
         _value = (float(_mem.__getattribute__(attr)) / _mem.__getattribute__('total') * 100) if per else _mem.__getattribute__(attr)
         setattr(self, attr, _value)
 

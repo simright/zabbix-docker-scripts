@@ -16,8 +16,6 @@ def check_container_stats(container_name,collect_item):
     container_collect.close()
     if collect_item == 'cpu_total_usage':
         result=new_result['cpu_stats']['cpu_usage']['total_usage'] # - old_result['cpu_stats']['cpu_usage']['total_usage']
-    elif collect_item == 'cpu_available':
-        result=new_result['memory_stats']['limit'] - new_result['cpu_stats']['cpu_usage']['total_usage']
     elif collect_item == 'cpu_system_usage':
         result=new_result['cpu_stats']['system_cpu_usage'] # - old_result['cpu_stats']['system_cpu_usage']
     elif collect_item == 'cpu_percent':
