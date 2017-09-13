@@ -23,13 +23,14 @@ class mem(object):
         _value = (float(_mem.__getattribute__(attr)) / _mem.__getattribute__('total') * 100) if eval(per) else _mem.__getattribute__(attr)
         setattr(self, attr, _value)
 
-class disk(object):
-    """docstring for disk"""
-    def __init__(self, arg):
-        super(disk, self).__init__()
-        self.arg = arg
-        
+class net(object):
+    """docstring for net"""
+    def __init__(self, attr, per):
+        super(net, self).__init__()
+        per = eval(per)
+        setattr(self, attr, psutil.net_io_counters().__getattribute__(attr))
 
+        
 def get_inventory_by_name(inventory_type, inventory_name, per):
     return obj.get(inventory_type)(inventory_name, per).__getattribute__(inventory_name)
 
@@ -37,7 +38,7 @@ def get_inventory_by_name(inventory_type, inventory_name, per):
 obj = {
     'cpu': cpu,
     'mem': mem,
-    # 'network': network,
+    'net': net,
     # 'disk': disk
 }
 
